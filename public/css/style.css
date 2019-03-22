@@ -1,0 +1,99 @@
+.nopadh {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+body > .pusher > .full.height {
+    display: flex;
+}
+#content {
+    flex: 1 1 auto;
+    width: calc(100% - 250px);
+}
+#menu {
+    margin-bottom: 0px;
+    border-radius: 0px;
+    min-height: 100vh;
+    min-width: 250px;
+    width: 250px;
+}
+
+#menu > .item:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+#menu > .active.item {
+    border-radius: 0px !important;
+    background: rgba(255, 255, 255, .05) !important;
+}
+#sidebar > .active.item {
+    background: rgba(255, 255, 255, .05) !important;
+}
+#menu img.logo, #sidebar img.logo {
+    margin: 0 auto;
+}
+
+#navbar {
+    display: none !important;
+}
+
+#login {
+    margin-top: 100px;
+    text-align: center;
+}
+#login .logo {
+    width: 160px;
+}
+#login .wrap {
+    width: 250px;
+    margin: auto;
+}
+#login form label {
+    text-align: left;
+}
+
+#content .chartarea {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1116px;
+    margin-top: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#content .chartwrap {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.ui.calendar td.gray {
+    color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.green{color: green}
+.red{color: red}
+.blue{color: blue}
+
+@media screen and (max-width: 1024px) {
+    #menu {
+        display: none !important;
+    }
+    #navbar {
+        display: flex !important;
+    }
+    #content {
+        margin-top: 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .chartarea.data table thead {
+        display: none !important;
+    }
+    .chartarea.data table tbody tr {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+    }
+    .chartarea.data table tbody tr td {
+        text-align: left !important;
+    }
+}

@@ -1,0 +1,28 @@
+extends layout
+
+block body
+
+    #login
+        .wrap
+            //- img.logo(src='/img/logo_black.png')
+
+            - if (message)
+                    .ui.error.message
+                        | #{message}
+
+            form.ui.form(method='post')
+                .field
+                    label
+                        i.icon.user
+                        | Tài khoản
+                    input(name='username', type='text', placeholder='tài khoản')
+
+                .field
+                    label
+                        i.icon.lock
+                        | Mật khẩu
+                    input(name='password', type='password', placeholder='******')
+
+                .ui.blue.submit.button
+                    i.icon.sign.in
+                    | Đăng nhập

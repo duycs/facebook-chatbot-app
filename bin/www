@@ -1,0 +1,63 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../app');
+const consts = require('../services/consts');
+var http = require('http');
+var server;
+var fs = require('fs');
+
+if (fs.existsSync(consts.SSL_CERT)) {
+    var options = {
+        cert: fs.readFileSync(consts.SSL_CERT),
+        key: fs.readFileSync(consts.SSL_KEY)
+    };
+
+    server = require('https').createServer(options, app);
+} else {
+    server = http.createServer(app);
+}
+
+app.set('port', process.env.PORT || 3000);
+server.listen(app.get('port'));
+server.on('error', onError);
+server.on('listening', onListening);
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+function onError(error) {
+    if (error.syscall !== 'listen') {
+        throw error;
+    }
+
+    // handle specific listen errors with friendly messages
+    switch (error.code) {
+        case 'EACCES':
+            console.error('Port / Pipe requires elevated privileges');
+            process.exit(1);
+            break;
+
+        case 'EADDRINUSE':
+            console.error('Port / Pipe is already in use');
+            process.exit(1);
+            break;
+
+        default:
+            throw error;
+    }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+function onListening() {
+    var addr = server.address();
+    var bind = typeof addr === 'string' ?
+        'pipe ' + addr :
+        'port ' + addr.port;
+    console.log('Listening on ' + bind);
+}
